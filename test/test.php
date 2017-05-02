@@ -1,6 +1,5 @@
 <?php
-error_reporting(E_ALL);
-include_once 'index.php';
+require_once "../src/Builder.php";
 
 use builder\MyBuilder;
 
