@@ -1,0 +1,8 @@
+{
+    "name": "CrazyCodes/MyBuilder",
+    "description": "php快速构建",
+    "require": {
+        "php": "^5.3.3 || ^7.0",
+        "another-vendor/package": "1.*"
+    }
+}
