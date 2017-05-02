@@ -1,5 +1,5 @@
 {
-    "name": "crazycodes/mybuilder",
+    "name": "crazycode/mybuilder",
     "description": "this is fast builder for php",
     "require": {
         "php": ">=5.3.0",
