@@ -1,8 +1,8 @@
 {
     "name": "crazycodes/mybuilder",
-    "description": "php快速构建",
+    "description": "this is fast builder for php",
     "require": {
-        "php": "^5.3.3 || ^7.0",
-        "another-vendor/package": "1.*"
+        "php": ">=5.3.0",
+    	"another-vendor/package": "1.*"
     }
 }
