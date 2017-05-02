@@ -1,23 +1,16 @@
 <?php
 namespace MyBuilder;
 
-//use builder\widget\FromBuilder;
+use Mybuilder\widget\FromBuilder;
 
 class Builder
 {
-    //protected static $mount;
+    protected static $mount;
 
-//    public static function forms($object)
-//    {
-//        self::$mount[] = $object;
-//
-//        return new FromBuilder();
-//    }
-
-    public function aa()
+    public static function forms($object)
     {
-        echo 1;
+        self::$mount[] = $object;
+
+        return new FromBuilder();
     }
-
-
 }

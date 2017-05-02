@@ -1,5 +1,5 @@
 <?php
-namespace builder\widget;
+namespace MyBuilder\widget;
 
 class FromBuilder
 {
