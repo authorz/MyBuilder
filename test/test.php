@@ -1,9 +1,9 @@
 <?php
 require_once "../src/Builder.php";
 
-use builder\MyBuilder;
+use MyBuilder\Builder;
 
-$builder = MyBuilder::forms();
+$builder = Builder::forms();
 
 $builder->setFormUrl('test.php');
 
