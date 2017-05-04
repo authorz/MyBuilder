@@ -11,6 +11,17 @@ class FromBuilder
 
     protected static $isAjax = FALSE;
 
+    protected static $config;
+
+    protected static $title;
+
+    protected static $validation = FALSE;
+
+    public function __construct($config)
+    {
+        self::$config = $config;
+    }
+
     public function addFormItem($output)
     {
         self::$receive[] = $output;
@@ -18,6 +29,12 @@ class FromBuilder
         return $this;
     }
 
+    public function setFormTitle($title)
+    {
+        self::$title = $title;
+
+        return $this;
+    }
 
     public function setFormUrl($url)
     {
@@ -40,9 +57,14 @@ class FromBuilder
         self::$isAjax = TRUE;
     }
 
+    public function openValidation()
+    {
+        self::$validation = TRUE;
+    }
+
 
     public function display()
     {
-        include BASEDIR . '/builder/view/FromView.php';
+        include BUILDER_DIR . '/view/FromView.php';
     }
 }
