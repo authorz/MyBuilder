@@ -19,5 +19,5 @@
     - FromBuilder.php
     - TableBuilder.php
 - Builder.php # builder 核心文件
-- Common.php
-- Config.php
+- Common.php  # 公共配置文件
+- Config.php  # 核心配置文件 
