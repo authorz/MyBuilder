@@ -5,6 +5,8 @@ class Config
 {
     public $config;
 
+    public $tableConfig;
+
     public function __construct($config = NULL)
     {
         if (isset($config)) {
@@ -19,19 +21,31 @@ class Config
 
         $this->config = [
             'js' => [
-                '/vendor/myseries/mybuilder/src/asstes/js/vendor/modernizr-3.3.1.min.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/vendor/jquery-2.2.4.min.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/plugins.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/app.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/pages/formsComponents.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/plugins/ckeditor/ckeditor.js',
-                '/vendor/myseries/mybuilder/src/asstes/js/vendor/bootstrap.min.js'
+                '/asstes/js/vendor/modernizr-3.3.1.min.js',
+                '/asstes/js/vendor/jquery-2.2.4.min.js',
+                '/asstes/js/plugins.js',
+                '/asstes/js/app.js',
+                '/asstes/js/pages/formsComponents.js',
+                '/asstes/js/plugins/ckeditor/ckeditor.js',
+                '/asstes/js/vendor/bootstrap.min.js',
+                '/asstes/js/pages/uiTables.js',
+                '/asstes/plugin/toast/src/jquery.toast.js'
             ],
             'css' => [
-                '/vendor/myseries/mybuilder/src/asstes/css/bootstrap.min.css',
-                '/vendor/myseries/mybuilder/src/asstes/css/plugins.css',
-                '/vendor/myseries/mybuilder/src/asstes/css/main.css',
-                '/vendor/myseries/mybuilder/src/asstes/css/themes.css',
+                '/asstes/css/bootstrap.min.css',
+                '/asstes/css/plugins.css',
+                '/asstes/css/main.css',
+                '/asstes/css/themes.css',
+                '/asstes/plugin/toast/src/jquery.toast.css'
+            ]
+        ];
+
+        $this->tableConfig = [
+            'js' => [
+
+            ],
+            'css' => [
+
             ]
         ];
     }

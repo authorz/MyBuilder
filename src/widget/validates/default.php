@@ -20,27 +20,35 @@
                     },
                     submitHandler: function (form) {
                         <?php if (!self::$isAjax) { ?>
-                            form.submit()
+                        form.submit()
                         <?php }else{ ?>
-                            $(form).serializeArray()
+                        $.ajax({
+                            type: "<?= self::$way ?>",
+                            url: "<?= self::$url ?>",
+                            data: $(form).serializeArray(),
+                            success: function (event) {
+                                console.log(event);
+                            }
+                        });
+
                         <?php } ?>
 
                     },
-                    rules: {
-                        <?php foreach(self::$receive as $key=>$val){ ?>
-                        '<?= $val['name'] ?>': {
-                            required: true
-                        },
-                        <?php } ?>
-                    },
-                    messages: {
-                        <?php foreach(self::$receive as $key=>$val){ ?>
-                        '<?= $val['name'] ?>': {
-                            required: 'Please enter a username'
-                        },
-                        <?php } ?>
-
-                    }
+//                    rules: {
+//                        <?php //foreach(self::$receive as $key=>$val){ ?>
+//                        '<?//= $val['name'] ?>//': {
+//                            required: true
+//                        },
+//                        <?php //} ?>
+//                    },
+//                    messages: {
+//                        <?php //foreach(self::$receive as $key=>$val){ ?>
+//                        '<?//= $val['name'] ?>//': {
+//                            required: 'Please enter a username'
+//                        },
+//                        <?php //} ?>
+//
+//                    }
                 });
             }
         };

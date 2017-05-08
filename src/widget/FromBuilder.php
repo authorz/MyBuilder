@@ -17,9 +17,18 @@ class FromBuilder
 
     protected static $validation = FALSE;
 
+    protected static $topTitle;
+
+    protected static $breadCrumbs;
+
     public function __construct($config)
     {
         self::$config = $config;
+    }
+
+    public function setBreadCrumbs($breadCrumbs)
+    {
+        self::$breadCrumbs = $breadCrumbs;
     }
 
     public function addFormItem($output)
@@ -34,6 +43,11 @@ class FromBuilder
         self::$title = $title;
 
         return $this;
+    }
+
+    public function setTopTitle($title)
+    {
+        self::$topTitle = $title;
     }
 
     public function setFormUrl($url)
