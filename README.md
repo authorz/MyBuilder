@@ -47,6 +47,7 @@ use MyBuilder\Builder; # 引用Builder
 ### second step
 <code>
 $builder = Builder::forms() # 创建From构建器
+
 $builder = Builder::tables() # 创建Table构建器
 </code>
 
