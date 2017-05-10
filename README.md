@@ -8,6 +8,9 @@
 - plan
     - [x] 添加 Chart 构建方法
     - [x] 实现自动化创建构建起方法
+- asstes
+    - [x] MyBuilder 需要手动设置资源文件目录
+    - [x] 资源文件下载地址:xxx.com
     
 ## Directory Structure
 - view 
