@@ -1,7 +1,9 @@
 <?php
 namespace MyBuilder\widget;
 
-class TableBuilder
+use MyBuilder\synergia\Builder;
+
+class TableBuilder implements Builder
 {
     protected static $config;
 

@@ -1,5 +1,8 @@
 <?php
 namespace MyBuilder\widget;
+
+use MyBuilder\synergia\Builder;
+
 /**
  *
  * @describe From 构建器
@@ -12,7 +15,7 @@ namespace MyBuilder\widget;
  *      CrazyCodes <625566775@qq.com>
  *
  */
-class FromBuilder
+class FromBuilder implements Builder
 {
     protected static $receive;
 

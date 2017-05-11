@@ -1,0 +1,7 @@
+/*
+!.gitignore
+!/src/
+!/tests/
+!.travis.yml
+!composer.json
+!README.md
