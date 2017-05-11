@@ -5,3 +5,4 @@
 !.travis.yml
 !composer.json
 !README.md
+*.DS_Store
