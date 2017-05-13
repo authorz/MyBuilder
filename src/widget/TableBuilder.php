@@ -1,98 +1,147 @@
 <?php
 namespace MyBuilder\widget;
 
-use MyBuilder\synergia\Builder;
+use MyBuilder\core\Table;
 
-class TableBuilder implements Builder
+/**
+ *
+ * @describe Table 构建器
+ *
+ * @see class TableBuilder()
+ * @author CrazyCodes <625566775@qq.com>
+ * @copyright MyBuilder 2017/5/11
+ * @version MyBuilder v1.0 Beta
+ * @extends Table
+ * @internal
+ *      CrazyCodes <625566775@qq.com>
+ *
+ */
+class TableBuilder extends Table
 {
-    protected static $config;
 
-    protected static $title;
-
-    protected static $validation;
-
-    protected static $topTitle;
-
-    protected static $breadCrumbs;
-
+    # 搜索默认开启
     protected static $isSearch = FALSE;
 
-    protected static $data;
-
+    # 数据标示
     protected static $column = [];
 
+    # 数据集
+    protected static $listData;
+
+    # 顶部按钮
     protected static $topBtn = [];
 
+    # 右边按钮
     protected static $rightBtn = [];
 
-    protected static $limit = 0;
-
+    # 默认标示
     protected static $listKey = 'id';
 
+    # 数据页数
+    protected static $limit = 0;
 
-    public function __construct($config)
-    {
-        self::$config = $config;
-    }
 
-    public function setFormTitle($title)
+    /**
+     *
+     * @describe 设置列表内容
+     *
+     * @access public
+     * @see isSearch()
+     * param $listData 数组列
+     */
+    public function addListData($listData)
     {
-        self::$title = $title;
+        if (is_array($listData)) {
+            self::$listData = $listData;
+        } else {
+            throw new \Exception('please use an array type');
+        }
 
         return $this;
     }
 
-    public function setTopTitle($title)
+    /**
+     *
+     * @describe 添加列表分类
+     *
+     * @access public
+     * @see addTableColumn()
+     * param $name 列表名称
+     *       $value 列表字段
+     *       $type 列表类型
+     *          default 默认样式
+     *          date 转换日期
+     *          url 链接格式
+     *          btn 按钮操作
+     *       $extend 扩展
+     */
+    public function addTableColumn($columnData)
     {
-        self::$topTitle = $title;
+        if (is_array($columnData)) {
+            self::$column[] = $columnData;
+        } else {
+            throw new \Exception('please use an array type');
+        }
 
         return $this;
     }
 
-    public function setBreadCrumbs($breadCrumbs)
+    /**
+     *
+     * @describe 添加顶部按钮
+     *
+     * @access public
+     * @see addTopButton()
+     * param $name 按钮名称
+     *       $value 按钮标示
+     *       $url 链接地址
+     *       $type url 直接跳转链接
+     *             checkbox 点击将checkbox值传入
+     */
+    public function addTopButton($topBtnData)
     {
-        self::$breadCrumbs = $breadCrumbs;
+        if (is_array($topBtnData)) {
+            self::$topBtn[] = $topBtnData;
+        } else {
+            throw new \Exception('please use an array type');
+        }
 
         return $this;
     }
 
-    // 搜索默认关闭,调用本方法打开
-    public function isSearch()
+    /**
+     *
+     * @describe 添加右边操作菜单
+     *
+     * @access public
+     * @see addRightButton()
+     * param $name 按钮名称
+     *       $value 按钮标示
+     *       $url 链接地址
+     *       $type true: ajax 访问
+     *             false : 直接跳转
+     *       $custom 参数
+     *       $way 方式 GET OR POST
+     */
+    public function addRightButton($rightBtn)
     {
-        self::$isSearch = TRUE;
-    }
-
-    public function setData($data = [])
-    {
-        self::$data = $data;
-    }
-
-    // $name 名称,$value 列表字段,$type 类型,$custom 扩展,$url 本table加链接
-    public function addTableColumn($name, $value, $type, $custom = [], $url)
-    {
-        $type = isset($type) ? $type : 'default';
-
-        self::$column[] = ['name' => $name, 'value' => $value, 'type' => $type, 'custom' => $custom, 'url' => $url];
+        if (is_array($rightBtn)) {
+            self::$rightBtn[] = $rightBtn;
+        } else {
+            throw new \Exception('please use an array type');
+        }
 
         return $this;
     }
 
-    public function addTopButton($name, $value, $url, $type)
-    {
-        self::$topBtn[] = ['name' => $name, 'value' => $value, 'url' => $url, 'type' => $type];
-
-        return $this;
-    }
-
-    // $type true = ajax访问 false = 直接跳转,$name 名称,$value 表单字段名,$url 要跳转的链接,$custom 获取的参数,$way 访问方式,$jump跳转地址
-    public function addRightButton($type = FALSE, $name, $value, $url, $custom, $way = 'post', $jump)
-    {
-        self::$rightBtn[] = ['type' => $type, 'name' => $name, 'value' => $value, 'url' => $url, 'custom' => $custom, 'way' => $way, 'jump' => $jump];
-
-        return $this;
-    }
-
-    // 设置默认的id
+    /**
+     *
+     * @describe 设置默认标示
+     *
+     * @access public
+     * @see setTableDataListKey()
+     *
+     */
     public function setTableDataListKey($key)
     {
         self::$listKey = $key;
@@ -100,6 +149,28 @@ class TableBuilder implements Builder
         return $this;
     }
 
+    /**
+     *
+     * @describe 开启搜索
+     *
+     * @access public
+     * @see isSearch()
+     * @搜索默认关闭
+     */
+    public function openSearch()
+    {
+        self::$isSearch = TRUE;
+
+        return $this;
+    }
+
+    /**
+     *
+     * @describe 设置数据页数
+     *
+     * @access public
+     * @see setLimit()
+     */
     public function setLimit($limit)
     {
         self::$limit = $limit;
@@ -107,9 +178,16 @@ class TableBuilder implements Builder
         return $this;
     }
 
-
+    /**
+     *
+     * @describe 模版渲染
+     *
+     * @access public
+     * @see display()
+     */
     public function display()
     {
         include BUILDER_DIR . '/view/TableView.php';
     }
+
 }

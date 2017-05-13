@@ -56,15 +56,14 @@
     <div class="block">
         <div class="block-title clearfix">
             <div class="block-options pull-left">
-                <?php foreach (self::$topBtn as $key => $item) { ?>
-                    <a href="javascript:;" value="<?= $item['value'] ?>"
-                       class="btn btn-effect-ripple btn-primary"><?= $item['name'] ?></a>
-                <?php } ?>
+                <?php include BUILDER_DIR . '/widget/tables/topBtn.php' ?>
             </div>
 
             <div class="block-options pull-right">
                 <div id="style-borders" class="btn-group">
-                    <a href="javascript:void(0)" class="btn btn-effect-ripple btn-primary" id="openSearch">搜索</a>
+                    <?php if (self::$isSearch) { ?>
+                        <a href="javascript:void(0)" class="btn btn-effect-ripple btn-primary" id="openSearch">搜索</a>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -83,7 +82,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach (self::$data as $key => $item) { ?>
+
+                <?php foreach (self::$listData as $key => $item) { ?>
                     <tr>
                         <td class="text-center">
                             <label class="csscheckbox csscheckbox-primary">
@@ -103,10 +103,15 @@
                                 case 'date':
                                     include BUILDER_DIR . "/widget/tables/date.php";
                                     break;
-                                case 'custom':
-                                    include BUILDER_DIR . "/widget/tables/custom.php";
+                                case 'url':
+                                    include BUILDER_DIR . "/widget/tables/url.php";
                                     break;
-
+                                case 'state':
+                                    include BUILDER_DIR . "/widget/tables/state.php";
+                                    break;
+                                default:
+                                    include BUILDER_DIR . "/widget/tables/default.php";
+                                    break;
                             }
                             ?>
                         <?php } ?>
@@ -124,66 +129,8 @@
 } ?>
 
 
-<script>
-    <?php foreach (self::$rightBtn as $key => $rightBtn) { ?>
-    $('a[value="<?=$rightBtn['value']?>"]').on('click', function () {
-        <?php if($rightBtn['type']){ ?>
-        $.<?=$rightBtn['way']?>('<?=$rightBtn['url']?>', {
-            <?php foreach($rightBtn['custom'] as $key=>$item){ ?>
-            '<?=$item?>': $(this).attr('<?=$item?>'),
-            <?php } ?>
-        }, function (event) {
-            $.toast({
-                heading: '提示',
-                text: '操作成功',
-                position: 'top-center',
-                icon: 'success',
-                hideAfter: 1000,
-                afterHidden: function () {
-                    <?php if($rightBtn['jump']){ ?>
-                    location.href = <?=isset($rightBtn['jump']) ? "'" . $rightBtn['jump'] . "'" : "location.href"?>;
-                    <?php } ?>
-                }
-            });
-        });
-        <?php }else{ ?>
-        var url = '';
-        <?php foreach($rightBtn['custom'] as $key=>$item){ ?>
-        <?php if((count($rightBtn['custom']) - 1) == $key){ ?>
-        url += '<?=$item?>=' + $(this).attr('<?=$item?>');
-        <?php }else{ ?>
-        url += '<?=$item?>=' + $(this).attr('<?=$item?>') + "&";
-        <?php } ?>
-        <?php } ?>
-        location.href = '<?=$rightBtn['url']?>?' + url;
-
-        <?php } ?>
-
-    });
-    <?php } ?>
-</script>
-
-<script>
-    <?php foreach (self::$topBtn as $key => $topBtn) { if($topBtn['value']){ ?>
-    $('a[value="<?=$topBtn['value']?>"]').on('click', function () {
-        <?php if($topBtn['type'] == 'url'){ ?>
-        location.href = '<?=$topBtn['url']?>';
-        <?php }else{ ?>
-        var allChoose = "";
-
-        $('input:checkbox[name="checkbox"]:checked').each(function (i) {
-            if (0 == i) {
-                allChoose = $(this).val();
-            } else {
-                allChoose += ("," + $(this).val());
-            }
-        });
-
-        console.log(allChoose);
-        <?php } ?>
-    });
-    <?php }} ?>
-</script>
+<?php include BUILDER_DIR . '/widget/tables/script/rightBtn.js.php'; ?>
+<?php include BUILDER_DIR . '/widget/tables/script/topBtn.js.php'; ?>
 
 <script>
     $(function () {

@@ -1,6 +1,9 @@
 <?php
 namespace MyBuilder;
 
+error_reporting(E_ERROR);
+ini_set('display_errors','on');
+
 use MyBuilder\widget\FromBuilder;
 use MyBuilder\widget\TableBuilder;
 

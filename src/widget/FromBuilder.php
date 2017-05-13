@@ -1,7 +1,7 @@
 <?php
 namespace MyBuilder\widget;
-
-use MyBuilder\synergia\Builder;
+use MyBuilder\synergia\BuilderInterface;
+use MyBuilder\synergia\Title;
 
 /**
  *
@@ -15,8 +15,10 @@ use MyBuilder\synergia\Builder;
  *      CrazyCodes <625566775@qq.com>
  *
  */
-class FromBuilder implements Builder
+class FromBuilder implements BuilderInterface
 {
+    use Title;
+
     protected static $receive;
 
     protected static $url;
