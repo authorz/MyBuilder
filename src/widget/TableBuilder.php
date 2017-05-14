@@ -40,6 +40,9 @@ class TableBuilder extends Table
     # 数据页数
     protected static $limit = 0;
 
+    # 搜索表单
+    protected static $fromData = [];
+
 
     /**
      *
@@ -177,6 +180,21 @@ class TableBuilder extends Table
 
         return $this;
     }
+
+    /**
+     *
+     * @describe 生成form表单
+     *
+     * @access public
+     * @see addFormItem()
+     */
+    public function addFormItem($output)
+    {
+        self::$fromData[] = $output;
+
+        return $this;
+    }
+
 
     /**
      *

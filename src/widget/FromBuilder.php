@@ -49,17 +49,6 @@ class FromBuilder implements BuilderInterface
         self::$config = $config;
     }
 
-    /**
-     *
-     * @describe 设置面包渣导航
-     *
-     * @access public
-     * @see setBreadCrumbs()
-     */
-    public function setBreadCrumbs($breadCrumbs)
-    {
-        self::$breadCrumbs = $breadCrumbs;
-    }
 
     /**
      *
@@ -75,31 +64,6 @@ class FromBuilder implements BuilderInterface
         return $this;
     }
 
-    /**
-     *
-     * @describe 设置构建器标题
-     *
-     * @access public
-     * @see setFormTitle()
-     */
-    public function setFormTitle($title)
-    {
-        self::$title = $title;
-
-        return $this;
-    }
-
-    /**
-     *
-     * @describe 设置构建器顶部标题
-     *
-     * @access public
-     * @see setTopTitle()
-     */
-    public function setTopTitle($title)
-    {
-        self::$topTitle = $title;
-    }
 
     /**
      *

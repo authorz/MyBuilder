@@ -20,6 +20,9 @@ $builder->setTableDataListKey('user_id');
 // 面包渣导航
 $builder->setBreadCrumbs(['用户', '用户管理', '用户列表']);
 
+$builder->addFormItem(['name'=>'用户名','value'=>'username']);
+$builder->addFormItem(['name'=>'性别','value'=>'sex']);
+
 // 顶部导航
 $builder->addTopButton(['name' => '添加', 'value' => 'add', 'url' => 'FromBuilderTest.php', 'type' => 'url']);
 $builder->addTopButton(['name' => '删除', 'value' => 'del', 'url' => 'TableWay.php?way=del', 'type' => 'checkbox']);
@@ -72,3 +75,4 @@ $builder->addRightButton(['name' => '删除', 'value' => 'del', 'type' => TRUE, 
 $builder->setLimit(2);
 
 $builder->display();
+

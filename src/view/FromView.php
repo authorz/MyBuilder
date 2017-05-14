@@ -60,11 +60,11 @@
 
             <div class="block">
                 <div class="block-title">
-                    <div class="block-options pull-right">
-                        <a href="javascript:void(0)"
-                           class="btn btn-effect-ripple btn-default toggle-bordered enable-tooltip" data-toggle="button"
-                           title="简化"><i class="fa fa-bars"></i></a>
-                    </div>
+<!--                    <div class="block-options pull-right">-->
+<!--                        <a href="javascript:void(0)"-->
+<!--                           class="btn btn-effect-ripple btn-default toggle-bordered enable-tooltip" data-toggle="button"-->
+<!--                           title="简化"><i class="fa fa-bars"></i></a>-->
+<!--                    </div>-->
                     <h2 ><?= self::$title ?></h2>
                 </div>
 
