@@ -1,7 +1,7 @@
 <?php
 namespace MyBuilder\widget;
-use MyBuilder\synergia\BuilderInterface;
-use MyBuilder\synergia\Title;
+
+use MyBuilder\core\From;
 
 /**
  *
@@ -15,9 +15,8 @@ use MyBuilder\synergia\Title;
  *      CrazyCodes <625566775@qq.com>
  *
  */
-class FromBuilder implements BuilderInterface
+class FromBuilder extends From
 {
-    use Title;
 
     protected static $receive;
 
@@ -25,29 +24,11 @@ class FromBuilder implements BuilderInterface
 
     protected static $way;
 
-    protected static $isAjax = FALSE;
-
-    protected static $config;
-
-    protected static $title;
+    protected static $isAjax = TRUE;
 
     protected static $validation = FALSE;
 
-    protected static $topTitle;
-
-    protected static $breadCrumbs;
-
-    /**
-     *
-     * @describe 构造
-     *
-     * @access public
-     * @see __construct()
-     */
-    public function __construct($config)
-    {
-        self::$config = $config;
-    }
+    protected static $uploadConfig;
 
 
     /**
@@ -117,6 +98,11 @@ class FromBuilder implements BuilderInterface
     public function openValidation()
     {
         self::$validation = TRUE;
+    }
+
+    public function upload($uploadConfig)
+    {
+        self::$uploadConfig = $uploadConfig;
     }
 
     /**

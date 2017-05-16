@@ -60,17 +60,18 @@
 
             <div class="block">
                 <div class="block-title">
-<!--                    <div class="block-options pull-right">-->
-<!--                        <a href="javascript:void(0)"-->
-<!--                           class="btn btn-effect-ripple btn-default toggle-bordered enable-tooltip" data-toggle="button"-->
-<!--                           title="简化"><i class="fa fa-bars"></i></a>-->
-<!--                    </div>-->
-                    <h2 ><?= self::$title ?></h2>
+                    <!--                    <div class="block-options pull-right">-->
+                    <!--                        <a href="javascript:void(0)"-->
+                    <!--                           class="btn btn-effect-ripple btn-default toggle-bordered enable-tooltip" data-toggle="button"-->
+                    <!--                           title="简化"><i class="fa fa-bars"></i></a>-->
+                    <!--                    </div>-->
+                    <h2><?= self::$title ?></h2>
                 </div>
 
                 <form action="<?= self::$url ?>" method="<?= self::$way ?>" name="form"
                       class="form-horizontal form-bordered" id="form-validation"
-                    <?php if (self::$isAjax) { ?> onsubmit="return false;" <?php } ?> enctype="multipart/form-data" style="margin: 0px -11px 2px;">
+                    <?php if (self::$isAjax) { ?> onsubmit="return false;" <?php } ?> enctype="multipart/form-data"
+                      style="margin: 0px -11px 2px;">
                     <?php
                     foreach (self::$receive as $key => $item) {
                         switch ($item['type']) {
@@ -113,17 +114,11 @@
                                 break;
                             // 上传插件
                             case 'upload':
+                                include BUILDER_DIR . '/widget/froms/upload.php';
                                 break;
                             // ck富文本
-                            case 'ckeditor':
-                                break;
-                            // 普通文件上传
-                            case 'file':
-                                include BUILDER_DIR . '/widget/froms/file.php';
-                                break;
-                            // 普通多文件上传
-                            case 'multipe':
-                                include BUILDER_DIR . '/widget/froms/multipe.php';
+                            case 'ueditor':
+                                include BUILDER_DIR . '/widget/froms/ueditor.php';
                                 break;
                             default:
                                 break;
@@ -155,10 +150,14 @@
 <script>
     $(function () {
         FormsComponents.init();
+
+        <?php include BUILDER_DIR . "/widget/froms/script/upload.js.php"?>
+
+        <?php include BUILDER_DIR . "/widget/froms/script/ueditor.js.php"?>
+
+        <?php include BUILDER_DIR . "/widget/froms/script/form.js.php"?>
     });
 </script>
-<?php if (self::$validation == TRUE) { ?>
-    <?php include BUILDER_DIR . '/widget/validates/default.php'; ?>
-<?php } ?>
+
 </body>
 </html>

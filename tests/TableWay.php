@@ -7,3 +7,5 @@ if ($_GET['way'] == 'del') {
 if ($_GET['way'] == 'disable') {
     die(json_encode(['code' => 0, 'message' => '操作失败']));
 }
+
+var_dump($_POST);

@@ -29,14 +29,29 @@ class Config
                 '/asstes/js/plugins/ckeditor/ckeditor.js',
                 '/asstes/js/vendor/bootstrap.min.js',
                 '/asstes/js/pages/uiTables.js',
-                '/asstes/plugin/toast/src/jquery.toast.js'
+                '/asstes/plugin/toast/src/jquery.toast.js',
+                // ueditor
+                '/asstes/plugin/ueditor/ueditor.config.js',
+                '/asstes/plugin/ueditor/ueditor.all.min.js',
+                '/asstes/plugin/ueditor/lang/zh-cn/zh-cn.js',
+                // file input
+
+                '/asstes/plugin/fileinput/js/plugins/canvas-to-blob.min.js',
+                '/asstes/plugin/fileinput/js/plugins/sortable.min.js',
+                '/asstes/plugin/fileinput/js/plugins/purify.min.js',
+                '/asstes/plugin/fileinput/js/fileinput.min.js',
+                '/asstes/plugin/fileinput/themes/explorer/theme.js',
+                '/asstes/plugin/fileinput/js/locales/zh.js',
+
             ],
             'css' => [
-                '/asstes/css/bootstrap.min.css',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
                 '/asstes/css/plugins.css',
                 '/asstes/css/main.css',
                 '/asstes/css/themes.css',
-                '/asstes/plugin/toast/src/jquery.toast.css'
+                '/asstes/plugin/toast/src/jquery.toast.css',
+                '/asstes/plugin/fileinput/css/fileinput.css',
+                '/asstes/plugin/fileinput/themes/explorer/theme.css',
             ]
         ];
 

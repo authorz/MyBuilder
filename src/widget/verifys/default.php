@@ -22,6 +22,7 @@
                         <?php if (!self::$isAjax) { ?>
                         form.submit()
                         <?php }else{ ?>
+                        console.log($(form).serializeArray());
                         $.ajax({
                             type: "<?= self::$way ?>",
                             url: "<?= self::$url ?>",
